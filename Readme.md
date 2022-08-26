@@ -15,9 +15,10 @@ It contains a executable code that can be used to generate kml files through a c
 
 ![readme-img](https://github.com/victordalosto/kml-generator/blob/main/src/assets/readme-build.PNG?raw=true)
 
+</div>
+
 
 ## Images:
-</div>
 The generateds KML file ploted in the Google Earth are presetended in the following images.
 
 
