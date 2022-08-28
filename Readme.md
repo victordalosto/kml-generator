@@ -13,7 +13,7 @@ It contains a executable code that can be used to generate kml files through a c
 
 <div align="center">
 
-![readme-img](https://github.com/victordalosto/kml-generator/blob/main/src/assets/readme-build.PNG?raw=true)
+![readme-img](https://github.com/victordalosto/kml-generator/blob/main/example/assets/readme-build.PNG?raw=true)
 
 </div>
 
@@ -22,8 +22,8 @@ It contains a executable code that can be used to generate kml files through a c
 The generateds KML file ploted in the Google Earth are presetended in the following images.
 
 
-![readme-example](https://github.com/victordalosto/kml-generator/blob/main/src/assets/readme-example1.PNG?raw=true)
+![readme-example](https://github.com/victordalosto/kml-generator/blob/main/example/assets/readme-example1.PNG?raw=true)
 
-![readme-example](https://github.com/victordalosto/kml-generator/blob/main/src/assets/readme-example2.PNG?raw=true)
+![readme-example](https://github.com/victordalosto/kml-generator/blob/main/example/assets/readme-example2.PNG?raw=true)
 
 </div>

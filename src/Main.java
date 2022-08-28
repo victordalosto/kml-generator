@@ -1,6 +1,6 @@
 package src;
 
-import src.controller.GUI;
+import src.view.GUI;
 
 public class Main {
     

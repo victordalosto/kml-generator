@@ -1,4 +1,4 @@
-package src.controller;
+package src.view;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -13,14 +13,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import src.model.KML;
-
+import src.model.GenerateKML;
 
 public class GUI {
 
     private static JFrame frame = new JFrame();
     private static JPanel panel = new JPanel();
+    private static JLabel label = new JLabel("Name: ");
+    private static JButton button = new JButton("Search");
     private static ImageIcon img = new ImageIcon("src\\assets\\google-earth-icon.jpg");
+    private static JTextField textField = new JTextField(20);
 
     static {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,29 +32,29 @@ public class GUI {
         frame.setLocationRelativeTo(null);
         frame.setBackground(Color.WHITE);
         panel.setBackground(Color.WHITE);
-    }
-
-
-    public static void run() {
-        JLabel label = new JLabel("Name: ");
-        JTextField textField = new JTextField(20);
-        JButton button = new JButton("Search");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
-                chooser.showOpenDialog(chooser);
-                chooser.setVisible(true);       
-                String path = chooser.getSelectedFile().getAbsolutePath();
                 try {
-                    KML.create(textField.getText(), path);
-                } catch (RuntimeException exception) {
-                    JOptionPane.showMessageDialog(null, exception.getMessage());
-                    return;
+                    JFileChooser chooser = new JFileChooser();
+                    chooser.showOpenDialog(chooser);
+                    chooser.setVisible(true);
+                    String path = chooser.getSelectedFile().getAbsolutePath();
+                    try {
+                        GenerateKML.create(textField.getText(), path);
+                    } catch (RuntimeException exception) {
+                        JOptionPane.showMessageDialog(null, exception.getMessage());
+                        return;
+                    }
+                    JOptionPane.showMessageDialog(null, "Generated KML");
+                } catch (NullPointerException exc) {
+                    System.out.println("Import canceled");
                 }
-                JOptionPane.showMessageDialog(null, "Generated KML");
             }
         });
+    }
+
+    public static void run() {
         panel.add(label);
         panel.add(textField);
         panel.add(button);
@@ -60,5 +62,6 @@ public class GUI {
         frame.setIconImage(img.getImage());
         frame.setVisible(true);
     }
-    
+
+
 }

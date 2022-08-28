@@ -20,17 +20,18 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class KML {
+public class GenerateKML {
 
     private static final int maxCoordinateSize = 2500;
 
 
 
     /** Generate a KML given the nameKML and the .CSV path with coordinates */
-    public synchronized static void create(String nameKML, String path) {
+    public static void create(String nameKML, String path) {
         List<Coordinates> listCoord = getCoordinatesFromCSV(nameKML, path);
         initialize(nameKML, listCoord, path);
     }
+
 
 
 
@@ -45,6 +46,7 @@ public class KML {
                 if (array.length != 2)
                     throw new RuntimeException("Wrong format for the input file");
                 try {
+
                     Coordinates coordenada = new Coordinates(Double.parseDouble(array[0]), Double.parseDouble(array[1]));
                     listTemporary.add(coordenada);
                 } catch (NumberFormatException e) {
@@ -55,6 +57,7 @@ public class KML {
             throw new RuntimeException("Couldn't find input file");
         }
     }
+
 
 
 
@@ -69,6 +72,7 @@ public class KML {
         list.add(listTemporary.get(listTemporary.size() - 1));
         return list;
     }
+
 
 
 
@@ -88,7 +92,7 @@ public class KML {
             Element elementDocument = document.createElement("Document");
             root.appendChild(elementDocument);
 
-            // name element
+            // Name element
             Element nameE = document.createElement("name");
             nameE.appendChild(document.createTextNode(nameKML));
             elementDocument.appendChild(nameE);
