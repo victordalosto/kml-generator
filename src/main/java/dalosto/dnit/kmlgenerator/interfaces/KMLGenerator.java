@@ -6,10 +6,10 @@ import java.util.List;
 
 
 /**
- * Class that generate KMLs from files having coordinates in the following format:
+ * Class that generates KMLs from files having coordinates in the following format:
  *  -3.123456;40.123456 
- *  -3.1234-4;40.1234e-4
- * All methods outputs the path where the kml file was generated */
+ *  -3.1234-4;40,1234e-4
+ * All methods will output the Path where the kml file was generated */
 public interface KMLGenerator {
 
 
@@ -17,7 +17,7 @@ public interface KMLGenerator {
     Path createFromFile(File file) throws FileNotFoundException;
 
     
-    /** Create KML from a List of file */
+    /** Create KML from a List of files */
     List<Path> createFromListOfFiles(List<File> listOfFiles) throws FileNotFoundException;
 
 

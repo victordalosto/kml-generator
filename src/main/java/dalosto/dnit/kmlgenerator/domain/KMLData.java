@@ -6,9 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class KMLModel {
+public class KMLData {
 
-    private String fileName;
-    private List<Coordinates> coordenadas;
+    private String name;
+    private List<Coordinates> coordinates;
 
 }

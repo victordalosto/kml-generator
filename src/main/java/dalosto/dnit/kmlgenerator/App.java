@@ -18,7 +18,7 @@ public class App {
 
     @PostConstruct
     void run() throws FileNotFoundException {
-        List<File> files = List.of(Paths.get("input", "211").toFile());
+        List<File> files = List.of(Paths.get("test.csv").toFile());
         kmlGenerator.createFromListOfFiles(files);
     }
 

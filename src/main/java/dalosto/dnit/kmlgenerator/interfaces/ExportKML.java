@@ -1,9 +1,9 @@
 package dalosto.dnit.kmlgenerator.interfaces;
 import java.nio.file.Path;
-import dalosto.dnit.kmlgenerator.domain.KMLModel;
+import dalosto.dnit.kmlgenerator.domain.KMLData;
 
 
-/** Class that Export a KMLModel into a real KML in the root Directory */
+/** Class that Export a KMLData into a real KML in the root Directory */
 public interface ExportKML {
     
 
@@ -13,6 +13,6 @@ public interface ExportKML {
 
 
     /** Generate a KML file using the previously DNIT pattern  */
-    Path generate(KMLModel kmlModel);
+    Path generate(KMLData data);
     
 }

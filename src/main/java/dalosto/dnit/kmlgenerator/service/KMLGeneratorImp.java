@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import dalosto.dnit.kmlgenerator.domain.KMLModel;
+import dalosto.dnit.kmlgenerator.domain.KMLData;
 import dalosto.dnit.kmlgenerator.interfaces.ExportKML;
-import dalosto.dnit.kmlgenerator.interfaces.FactoryKMLModel;
+import dalosto.dnit.kmlgenerator.interfaces.FactoryKMLData;
 import dalosto.dnit.kmlgenerator.interfaces.KMLGenerator;
 
 /**
@@ -20,7 +20,7 @@ import dalosto.dnit.kmlgenerator.interfaces.KMLGenerator;
 public class KMLGeneratorImp implements KMLGenerator {
 
     @Autowired
-    private FactoryKMLModel factoryKML;
+    private FactoryKMLData factoryKMLData;
 
     @Autowired
     private ExportKML exportKML;
@@ -28,8 +28,8 @@ public class KMLGeneratorImp implements KMLGenerator {
 
     @Override
     public Path createFromFile(File file) throws FileNotFoundException {
-        KMLModel model = factoryKML.createFromFile(file);
-        Path output = exportKML.generate(model);
+        KMLData kmlData = factoryKMLData.createFromFile(file);
+        Path output = exportKML.generate(kmlData);
         return output;
     }
 

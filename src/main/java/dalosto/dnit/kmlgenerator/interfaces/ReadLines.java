@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 
-/** Adapter for a Scanner that reads a file line by line */
+/** Adapter that reads a file line by line */
 public interface ReadLines {
 
 
