@@ -10,7 +10,7 @@ import jakarta.annotation.PostConstruct;
 
 
 @Component
-public class App {
+public class GenerateKMLApplication {
 
     @Autowired
     KMLGenerator kmlGenerator;

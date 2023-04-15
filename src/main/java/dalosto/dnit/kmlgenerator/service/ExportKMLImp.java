@@ -25,27 +25,38 @@ import lombok.Setter;
 @Component
 public class ExportKMLImp implements ExportKML {
 
-    private Path saveDirectory = Paths.get("output");
+    private Path savingDirectory = Paths.get("output");
 
 
     public void setSavingDirectory(Path saveDirectory) {
-        this.saveDirectory = saveDirectory;
+        this.savingDirectory = saveDirectory;
     }
 
 
-    public Path generate(KMLData kmlData) {
+    public Path generateKML(KMLData kmlData) {
         try {
             KML kml = new KML();
             kml.appendKMLHeader();
             kml.appendName(kmlData.getName());
             kml.appendStyle();
             kml.appendCoordinates(kmlData.getCoordinates());
-            return kml.saveFile(saveDirectory);
+            File futureFileLocation = setFutureFileLocation(savingDirectory, kmlData.getName());
+            kml.saveFileIn(futureFileLocation);
+            return futureFileLocation.toPath();
         } catch (ParserConfigurationException | TransformerException e) {
             System.out.println("\nError while creating kml: " + kmlData.getName());
             e.printStackTrace();
             return null;
         }
+    }
+
+
+    private File setFutureFileLocation(Path saveDirectory, String name) {
+        if (!saveDirectory.toFile().isDirectory()) {
+            saveDirectory.toFile().mkdirs();
+        }
+        String fileName = name.replaceAll("\\.[a-zA-Z0-9]+$", "") + ".kml";
+        return Paths.get(saveDirectory.toString(), fileName).toFile();
     }
 
 
@@ -131,12 +142,7 @@ public class ExportKMLImp implements ExportKML {
         }
 
 
-        public Path saveFile(Path baseDir) throws TransformerException {
-            if (!baseDir.toFile().isDirectory()) {
-                baseDir.toFile().mkdirs();
-            }
-            String fileName = name.replaceAll("\\.[a-zA-Z0-9]+$", "") + ".kml";
-            File outPut = Paths.get(baseDir.toString(), fileName).toFile();
+        public Path saveFileIn(File outPut) throws TransformerException {
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");

@@ -13,6 +13,6 @@ public interface ExportKML {
 
 
     /** Generate a KML file using the previously DNIT pattern  */
-    Path generate(KMLData data);
+    Path generateKML(KMLData data);
     
 }

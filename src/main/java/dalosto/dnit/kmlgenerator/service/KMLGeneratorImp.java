@@ -14,8 +14,7 @@ import dalosto.dnit.kmlgenerator.interfaces.FactoryKMLData;
 import dalosto.dnit.kmlgenerator.interfaces.KMLGenerator;
 
 /**
- * Class that implements the KMLGenerator interface
- * This implementation uses the Commander and Facade design patterns */
+ * This implementation of KMLGENERATOR uses the Commander and Facade design patterns */
 @Component
 public class KMLGeneratorImp implements KMLGenerator {
 
@@ -29,7 +28,7 @@ public class KMLGeneratorImp implements KMLGenerator {
     @Override
     public Path createFromFile(File file) throws FileNotFoundException {
         KMLData kmlData = factoryKMLData.createFromFile(file);
-        Path output = exportKML.generate(kmlData);
+        Path output = exportKML.generateKML(kmlData);
         return output;
     }
 
