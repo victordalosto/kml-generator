@@ -1,19 +1,23 @@
 package dalosto.dnit.kmlgenerator.domain;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 
-@AllArgsConstructor
 @Getter
 public class Coordinates {
 
-    private double x;
     private double y;
+    private double x; // In the Google Earth import, x is the second parameter
+
+
+    public Coordinates(Double y, Double x) {
+        this.y = y;
+        this.x = x;
+    }
 
 
     public Coordinates(String first, String second) {
         this.y = getDoubleFromString(first);
-        this.x = getDoubleFromString(second); // Coordinates are inverted in the Google Earth import, so x is the second
+        this.x = getDoubleFromString(second);
     }
 
 
@@ -25,11 +29,13 @@ public class Coordinates {
 
 
     private String clearContent(String str) {
+        if (str == null)
+            throw new NumberFormatException("The coordinates is null.");
         return str.replaceAll("[\\sa-zA-Z]+", "").replaceAll("[,]+", ".");
     }
 
 
-    // Accounts the fact that some number are in Cientific format as in (-1.234-5)
+    // Accounts the fact that some number are in Cientific format and are not directly converted by java
     private String fixCientificFormat(String str) {
         String newStr;
         int lastHyphenIndex = str.lastIndexOf("-");

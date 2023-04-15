@@ -17,13 +17,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import dalosto.dnit.kmlgenerator.domain.Coordinates;
 import dalosto.dnit.kmlgenerator.domain.KMLData;
-import dalosto.dnit.kmlgenerator.interfaces.ExportKML;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Component
-public class ExportKMLImp implements ExportKML {
+public class ExportKML {
 
     private Path savingDirectory = Paths.get("output");
 
