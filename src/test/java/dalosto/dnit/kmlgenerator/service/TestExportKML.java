@@ -24,7 +24,7 @@ public class TestExportKML {
 
     @Autowired
     ExportKML exportKML;
-    
+
     static KMLStructure mocKmlStructure;
 
 
@@ -33,10 +33,11 @@ public class TestExportKML {
         KMLData kmlData = new KMLData("mock", List.of(new Coordinates("1.2345", "-6.789")));
         mocKmlStructure = new KMLStructure(kmlData);
     }
-    
+
+
     @BeforeEach
     @AfterEach
-    void deleteDir() throws IOException {
+    void deleteTestDir() throws IOException {
         Path tempExportDir = Paths.get("src", "test", "java", "dalosto", "dnit", "kmlgenerator", "files", "export");
         exportKML.setSavingDirectory(tempExportDir);
         if (tempExportDir.toFile().exists()) {
@@ -45,7 +46,7 @@ public class TestExportKML {
         tempExportDir.toFile().mkdir();
     }
 
-    
+
     @Test
     void TestCreatingAValidKML() {
         try {
@@ -56,17 +57,13 @@ public class TestExportKML {
             String linesFromKML = String.join("", Files.readAllLines(generateKML));
             assertTrue(linesFromKML.contains("<name>mock</name>"));
             assertTrue(linesFromKML.contains("<coordinates>-6.789,1.2345 </coordinates>"));
+            assertTrue(linesFromKML.contains("<kml xmlns=\"http://earth.google.com/kml/"));
+            assertTrue(linesFromKML.startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"));
+            assertTrue(linesFromKML.endsWith("</kml>"));
             assertTrue(generateKML.toFile().getName().contains(".kml"));
         } catch (TransformerException | IOException e) {
             fail();
         }
     }
-    
-    
-
-
-
-
-   
 
 }

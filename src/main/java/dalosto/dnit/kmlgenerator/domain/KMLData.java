@@ -18,7 +18,8 @@ public class KMLData {
 
     public void setName(String name) {
         int dotIndex = name.lastIndexOf('.');
-        this.name = dotIndex == -1 ? name : name.substring(0, dotIndex);
+        String nameWithoutFileFormat = dotIndex == -1 ? name : name.substring(0, dotIndex);
+        this.name = nameWithoutFileFormat;
     }
 
 }

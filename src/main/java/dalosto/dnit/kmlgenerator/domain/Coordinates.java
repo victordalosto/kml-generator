@@ -6,15 +6,9 @@ import lombok.Getter;
 public class Coordinates {
 
     private double y;
-    private double x; // In the Google Earth import, x is the second parameter
+    private double x; // In the Google Earth, x is the second parameter
 
-
-    public Coordinates(Double y, Double x) {
-        this.y = y;
-        this.x = x;
-    }
-
-
+    
     public Coordinates(String first, String second) {
         this.y = getDoubleFromString(first);
         this.x = getDoubleFromString(second);
@@ -37,14 +31,17 @@ public class Coordinates {
 
     // Accounts the fact that some number are in Cientific format and are not directly converted by java
     private String fixCientificFormat(String str) {
-        String newStr;
-        int lastHyphenIndex = str.lastIndexOf("-");
-        if (!str.contains("E") && lastHyphenIndex > 0) {
-            newStr = str.substring(0, lastHyphenIndex) + "E-" + str.substring(lastHyphenIndex + 1, str.length());
-        } else {
-            newStr = str;
-        }
-        return newStr;
+        int minusIndex = str.lastIndexOf("-");
+        if (minusIndex > 0) {
+            return str.substring(0, minusIndex) + "E-" + str.substring(minusIndex + 1, str.length());
+        } 
+
+        int maxIndex = str.lastIndexOf("+");
+        if (maxIndex > 0) {
+            return str.substring(0, maxIndex) + "E+" + str.substring(maxIndex + 1, str.length());
+        } 
+        
+        return str;
     }
 
 }

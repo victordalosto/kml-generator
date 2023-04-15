@@ -22,14 +22,16 @@ import lombok.ToString;
 @Setter
 @ToString
 public class KMLStructure {
-
-    private String id = "redLine";
+    
     private Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-    private Element root = document.createElement("kml");
+    private Element element;
+
     private String name;
+    private String id = "redLine";
 
 
     public KMLStructure(KMLData kmlData) throws ParserConfigurationException {
+        this.element = document.createElement("kml");
         this.appendKMLHeader();
         this.appendName(kmlData.getName());
         this.appendStyle();
@@ -41,9 +43,9 @@ public class KMLStructure {
     private Element appendKMLHeader() {
         Attr xmlnsAttribute = this.document.createAttribute("xmlns");
         xmlnsAttribute.setValue("http://earth.google.com/kml/2.2");
-        this.root.setAttributeNode(xmlnsAttribute);
-        this.document.appendChild(root);
-        return root;
+        this.element.setAttributeNode(xmlnsAttribute);
+        this.document.appendChild(element);
+        return element;
     }
 
 
@@ -51,7 +53,7 @@ public class KMLStructure {
         this.name = name;
         Element nameElement = document.createElement("name");
         nameElement.appendChild(document.createTextNode(name));
-        root.appendChild(nameElement);
+        element.appendChild(nameElement);
     }
 
 
@@ -71,7 +73,7 @@ public class KMLStructure {
         lineStyle.appendChild(colorMode);
         styleElement.setAttributeNode(idAttribute);
         styleElement.appendChild(lineStyle);
-        root.appendChild(styleElement);
+        element.appendChild(styleElement);
     }
 
 
@@ -98,7 +100,7 @@ public class KMLStructure {
         }
         coordinates.appendChild(document.createTextNode(stringCoordinates.toString()));
         lineString.appendChild(coordinates);
-        root.appendChild(node);
+        element.appendChild(node);
     }
 
 

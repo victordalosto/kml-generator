@@ -9,7 +9,7 @@ import dalosto.dnit.kmlgenerator.domain.Coordinates;
 public interface ReadCoordinates {
 
 
-    /** Read lines from a file and store each line in a row of a List<String>*/
+    /** Read lines from a file and store each line as a Coordinate in a List */
     List<Coordinates> getFromFile(File file) throws FileNotFoundException, NumberFormatException;
 
 }

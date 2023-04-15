@@ -13,6 +13,7 @@ import dalosto.dnit.kmlgenerator.interfaces.ReadCoordinates;
 @Component
 public class ReadCoordinatesservice implements ReadCoordinates {
 
+    
     public List<Coordinates> getFromFile(File file) throws FileNotFoundException, NumberFormatException {
         List<Coordinates> coordinates = new ArrayList<>();
         try (Scanner scanner = new Scanner(file)) {
@@ -22,7 +23,7 @@ public class ReadCoordinatesservice implements ReadCoordinates {
             }
         }
         if (coordinates.size() == 0) {
-            throw new NumberFormatException("The file is empty.");
+            throw new NumberFormatException("The file " + file.getName() + " is empty.");
         }
         return coordinates;
     }
