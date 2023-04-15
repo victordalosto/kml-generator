@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import dalosto.dnit.kmlgenerator.domain.Coordinates;
 import dalosto.dnit.kmlgenerator.domain.KMLData;
-import dalosto.dnit.kmlgenerator.interfaces.FactoryKMLData;
 import dalosto.dnit.kmlgenerator.interfaces.ReadLines;
 
 
 @Component
-public class FactoryKMLDataImp implements FactoryKMLData {
+public class FactoryKMLData {
 
     @Autowired
     ReadLines readLinesAdapter;

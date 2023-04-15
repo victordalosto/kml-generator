@@ -11,7 +11,7 @@ public interface FactoryKMLData {
     /** Create a KMLData from a File containing coordinates
      *  Files must be presented in the following format:
      *  -3.123456;40.123456
-     *  -3.1234-4;40.1234e-4                                 */
+     *  -3.1234-4;40.1234e-4                             */
     KMLData createFromFile(File path) throws FileNotFoundException;
 
 

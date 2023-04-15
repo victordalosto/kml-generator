@@ -13,14 +13,16 @@ import dalosto.dnit.kmlgenerator.interfaces.ExportKML;
 import dalosto.dnit.kmlgenerator.interfaces.FactoryKMLData;
 import dalosto.dnit.kmlgenerator.interfaces.KMLGenerator;
 
+
 /**
- * This implementation of KMLGENERATOR uses the Commander and Facade design patterns */
+ * This implementation of KMLGenerator uses the Commander and Facade design patterns
+ */
 @Component
 public class KMLGeneratorImp implements KMLGenerator {
 
     @Autowired
     private FactoryKMLData factoryKMLData;
-
+    
     @Autowired
     private ExportKML exportKML;
 
@@ -46,9 +48,8 @@ public class KMLGeneratorImp implements KMLGenerator {
 
     @Override
     public List<Path> createFromDirectory(Path dir) throws FileNotFoundException {
-        List<File> listOfFiles = Stream.of(dir.toFile().listFiles())
-                                       .filter(file -> !file.isDirectory())
-                                       .collect(Collectors.toList());
+        List<File> listOfFiles = Stream.of(dir.toFile().listFiles()).filter(file -> !file.isDirectory())
+                .collect(Collectors.toList());
         return createFromListOfFiles(listOfFiles);
     }
 
