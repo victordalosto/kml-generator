@@ -10,6 +10,6 @@ public interface ReadCoordinates {
 
 
     /** Read lines from a file and store each line in a row of a List<String>*/
-    List<Coordinates> readCoordinatesFromFile(File file) throws FileNotFoundException, NumberFormatException;
+    List<Coordinates> getFromFile(File file) throws FileNotFoundException, NumberFormatException;
 
 }

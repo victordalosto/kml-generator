@@ -11,9 +11,9 @@ import dalosto.dnit.kmlgenerator.interfaces.ReadCoordinates;
 
 /** Adapter that reads the coordinates from a file. */
 @Component
-public class ReadLinesImp implements ReadCoordinates {
+public class ReadCoordinatesservice implements ReadCoordinates {
 
-    public List<Coordinates> readCoordinatesFromFile(File file) throws FileNotFoundException, NumberFormatException {
+    public List<Coordinates> getFromFile(File file) throws FileNotFoundException, NumberFormatException {
         List<Coordinates> coordinates = new ArrayList<>();
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
@@ -28,7 +28,7 @@ public class ReadLinesImp implements ReadCoordinates {
     }
 
 
-    public Coordinates convertStringToCoordinates(String text) throws NumberFormatException {
+    private Coordinates convertStringToCoordinates(String text) throws NumberFormatException {
         if (!text.contains(";")) {
             throw new NumberFormatException("The coordinates are not in the correct format.");
         }

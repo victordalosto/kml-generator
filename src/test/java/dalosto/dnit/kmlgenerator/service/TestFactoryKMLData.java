@@ -1,4 +1,4 @@
-package dalosto.dnit.kmlgenerator;
+package dalosto.dnit.kmlgenerator.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import dalosto.dnit.kmlgenerator.domain.KMLData;
 import dalosto.dnit.kmlgenerator.exception.InvalidKMLException;
-import dalosto.dnit.kmlgenerator.service.FactoryKMLData;
 
 
 @SpringBootTest
@@ -32,14 +31,14 @@ public class TestFactoryKMLData {
     
     
     @Test
-    void testThrowsErrorCreateFromBlankFile() {
+    void shouldThrowsErrorCreatingFromBlankFile() {
         File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\emptyfile.csv");
         assertThrows(InvalidKMLException.class, () -> factoryKMLData.createFromFile(file));
     }
     
 
     @Test
-    void testThrowsErrorCreateFromInexistentFile() {
+    void shouldThrowsErrorCreatingFromInexistentFile() {
         File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\inexistent.csv");
         assertThrows(InvalidKMLException.class, () -> factoryKMLData.createFromFile(file));
     }
@@ -47,7 +46,7 @@ public class TestFactoryKMLData {
     
     
     @Test
-    void testThrowsErrorCreateInvalidFile() {
+    void shouldThrowsErrorCreatingUsingInvalidFormatFile() {
         File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\wrongformat.csv");
         assertThrows(InvalidKMLException.class, () -> factoryKMLData.createFromFile(file));
     }

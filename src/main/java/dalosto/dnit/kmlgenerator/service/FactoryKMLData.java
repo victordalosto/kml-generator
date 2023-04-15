@@ -42,7 +42,7 @@ public class FactoryKMLData {
 
 
     private List<Coordinates> getCoordinatesFromFile(File file) throws FileNotFoundException, NumberFormatException {
-        return readCoordinatesAdapter.readCoordinatesFromFile(file);
+        return readCoordinatesAdapter.getFromFile(file);
     }
 
 }
