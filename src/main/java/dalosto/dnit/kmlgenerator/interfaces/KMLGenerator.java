@@ -1,8 +1,8 @@
 package dalosto.dnit.kmlgenerator.interfaces;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
-import dalosto.dnit.kmlgenerator.exception.InvalidKMLException;
 
 
 /**
@@ -14,20 +14,20 @@ public interface KMLGenerator {
 
 
     /** Create KML from a specific file */
-    Path createFromFile(File file) throws InvalidKMLException;
+    Path createFromFile(File file);
 
     
     /** Create KML from a List of files */
-    List<Path> createFromListOfFiles(List<File> listOfFiles) throws InvalidKMLException;
+    List<Path> createFromListOfFiles(List<File> listOfFiles);
 
 
     /** Create KML from a directory containing files */
-    List<Path> createFromDirectory(Path dir) throws InvalidKMLException;
+    List<Path> createFromDirectory(Path dir);
 
     
     /** Changes the Directory that holds the files generated 
-      * The default is the output directory       */
-    void setSaveDirectory(Path root);
+      * The default is the output directory               */
+    void setSaveDirectory(Path root) throws IOException;
 
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+    <name>rightformatfile</name>
+    <Style id="redLine">
+        <LineStyle>
+            <color>ffb87e00</color>
+            <width>7</width>
+            <colorMode>normal</colorMode>
+        </LineStyle>
+    </Style>
+    <Placemark>
+        <name>rightformatfile</name>
+        <styleUrl>#redLine</styleUrl>
+        <LineString>
+            <extrude>1</extrude>
+            <tessellate>1</tessellate>
+            <coordinates>-40.2037020052551,-3.455323187765579 -40.2039058523626,-3.455794406996205 -40.20469978622161,-3.4567689552126875 -40.20553663543146,-3.4576792466157915 -40.2062876539484,-3.4588572694841084 </coordinates>
+        </LineString>
+    </Placemark>
+</kml>

@@ -8,10 +8,8 @@ import dalosto.dnit.kmlgenerator.domain.Coordinates;
 import dalosto.dnit.kmlgenerator.domain.KMLData;
 import dalosto.dnit.kmlgenerator.exception.InvalidKMLException;
 import dalosto.dnit.kmlgenerator.interfaces.ReadCoordinates;
-import lombok.extern.slf4j.Slf4j;
 
 
-@Slf4j
 @Component
 public class FactoryKMLData {
 
@@ -24,11 +22,9 @@ public class FactoryKMLData {
             KMLData kmlData = createKMLData(file);
             return kmlData;
         } catch (FileNotFoundException e) {
-            log.error(" Não foi possível encontrar o arquivo: " + file.getName());
-            throw new InvalidKMLException(" Não foi possível encontrar o arquivo: " + file.getName());
+            throw new InvalidKMLException(" Nao foi possivel encontrar o arquivo: " + file.getName());
         } catch (NumberFormatException e) {
-            log.error(" O arquivo " + file.getName() + " não está no formato correto.");
-            throw new InvalidKMLException(" O arquivo " + file.getName() + " não está no formato correto.");
+            throw new InvalidKMLException(" O arquivo " + file.getName() + " nao esta no formato correto.");
         }
     }
 
