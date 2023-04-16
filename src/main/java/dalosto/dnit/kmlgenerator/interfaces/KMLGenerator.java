@@ -27,7 +27,7 @@ public interface KMLGenerator {
 
     /** Changes the root Directory that stores the saved files.
       * default is "./output/"                              */
-    void setSaveDirectory(Path root) throws IOException;
+    void setSavingDirectory(Path root) throws IOException;
 
 
 }

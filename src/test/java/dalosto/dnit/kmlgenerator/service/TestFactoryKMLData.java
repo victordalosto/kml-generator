@@ -18,7 +18,7 @@ public class TestFactoryKMLData {
 
 
     @Test
-    void testCreateValidKMLDataFromFile() {
+    void shouldCreateAValidKMLDataFromAFile() {
         try {
             File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\rightformatfile.csv");
             KMLData kmlData = factoryKMLData.createFromFile(file);
@@ -31,14 +31,14 @@ public class TestFactoryKMLData {
     
     
     @Test
-    void shouldThrowsErrorCreatingFromBlankFile() {
+    void shouldThrowsErrorWhenCreatingFromBlankFile() {
         File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\emptyfile.csv");
         assertThrows(InvalidKMLException.class, () -> factoryKMLData.createFromFile(file));
     }
     
 
     @Test
-    void shouldThrowsErrorCreatingFromInexistentFile() {
+    void shouldThrowsErrorWhenCreatingFromInexistentFile() {
         File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\inexistent.csv");
         assertThrows(InvalidKMLException.class, () -> factoryKMLData.createFromFile(file));
     }
@@ -46,7 +46,7 @@ public class TestFactoryKMLData {
     
     
     @Test
-    void shouldThrowsErrorCreatingUsingInvalidFormatFile() {
+    void shouldThrowsErrorWhenCreatingUsingInvalidFormatFile() {
         File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\wrongformat.csv");
         assertThrows(InvalidKMLException.class, () -> factoryKMLData.createFromFile(file));
     }

@@ -11,9 +11,9 @@ The kml-generator has been used at the <strong> National Department of Infrastru
 The generateds KML file ploted in the Google Earth are presetended in the following images.
 <div>
 
-![readme-example](https://github.com/victordalosto/kml-generator/blob/main/example/assets/readme-example1.PNG?raw=true)
+![readme-example](https://github.com/victordalosto/kml-generator/blob/main/doc/readme-example1.PNG?raw=true)
 
-![readme-example](https://github.com/victordalosto/kml-generator/blob/main/example/assets/readme-example2.PNG?raw=true)
+![readme-example](https://github.com/victordalosto/kml-generator/blob/main/doc/readme-example2.PNG?raw=true)
 
 </div>
 <br/><br/><br/>

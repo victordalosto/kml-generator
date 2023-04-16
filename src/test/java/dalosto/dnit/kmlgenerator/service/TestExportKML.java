@@ -27,6 +27,8 @@ public class TestExportKML {
 
     static KMLStructure mocKmlStructure;
 
+    
+
 
     @BeforeAll
     static void mocKmlData() throws ParserConfigurationException {
@@ -37,7 +39,7 @@ public class TestExportKML {
 
     @BeforeEach
     @AfterEach
-    void deleteTestDir() throws IOException {
+    void setupTemporatyTestDirectory() throws IOException {
         Path tempExportDir = Paths.get("src", "test", "java", "dalosto", "dnit", "kmlgenerator", "files", "export");
         exportKML.setSavingDirectory(tempExportDir);
         if (tempExportDir.toFile().exists()) {
@@ -48,7 +50,7 @@ public class TestExportKML {
 
 
     @Test
-    void TestCreatingAValidKML() {
+    void shouldCreateAValidKMLFromAValidKMLStructure() {
         try {
             Path generateKML = exportKML.generateKML(mocKmlStructure);
             if (!generateKML.toFile().exists()) {
@@ -65,5 +67,8 @@ public class TestExportKML {
             fail();
         }
     }
+
+
+
 
 }

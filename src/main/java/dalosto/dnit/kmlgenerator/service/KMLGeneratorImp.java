@@ -69,7 +69,7 @@ public class KMLGeneratorImp implements KMLGenerator {
 
 
     @Override
-    public void setSaveDirectory(Path dir) throws IOException {
+    public void setSavingDirectory(Path dir) throws IOException {
         this.exportKML.setSavingDirectory(dir);
     }
 
