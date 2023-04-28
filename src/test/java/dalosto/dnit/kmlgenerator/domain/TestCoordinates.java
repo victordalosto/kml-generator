@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class TestCoordinates {
 
     @Test
-    void shouldGenerateValidCoordinatesWhenUsingComma() {
+    void coordinatesWithCommaShouldGenerateValidCoordinates() {
         Coordinates coordinates = new Coordinates("1.2345", "-6.789");
         assertEquals(1.2345, coordinates.getY());
         assertEquals(-6.789, coordinates.getX());
@@ -17,7 +17,7 @@ public class TestCoordinates {
 
 
     @Test
-    void shouldGenerateValidCoordinatesWhenUsingDot() {
+    void coordinatesWithDotShouldGenerateValidCoordinates() {
         Coordinates coordinates = new Coordinates("1,2345", "-6,789");
         assertEquals(1.2345, coordinates.getY());
         assertEquals(-6.789, coordinates.getX());
@@ -25,7 +25,7 @@ public class TestCoordinates {
 
 
     @Test
-    void shouldGenerateValidCoordinatesEvenWhenStringHaveNoise() {
+    void coordinatesWithNoiseShouldGenerateValidCoordinates() {
         Coordinates coordinates = new Coordinates("1,2345asd", "-g6.789ccz");
         assertEquals(1.2345, coordinates.getY());
         assertEquals(-6.789, coordinates.getX());
@@ -33,7 +33,7 @@ public class TestCoordinates {
 
 
     @Test
-    void shouldGenerateValidCoordinatesWhenUsingCientificNumbers() {
+    void coordinatesWithNegativeCientificNumberShouldGenerateValidCoordinates() {
         Coordinates coordinates = new Coordinates("1.2345-5", "-6.789-5");
         assertEquals(1.2345E-5, coordinates.getY());
         assertEquals(-6.789E-5, coordinates.getX());
@@ -41,7 +41,7 @@ public class TestCoordinates {
 
 
     @Test
-    void shouldGenerateValidCoordinatesWhenUsingCientificNumbersAndPositiveExpoent() {
+    void coordinatesWithPositiveCientificNumberShouldGenerateValidCoordinates() {
         Coordinates coordinates = new Coordinates("1.2345+5", "-6.789+5");
         assertEquals(1.2345E+5, coordinates.getY());
         assertEquals(-6.789E+5, coordinates.getX());
@@ -49,7 +49,7 @@ public class TestCoordinates {
 
 
     @Test
-    void shouldGenerateValidCoordinatesWhenUsingCientificNumbersWithExpoentAsE() {
+    void coordinatesWithNegativeCientificNumberAndExplicitEShouldGenerateValidCoordinates() {
         Coordinates coordinates = new Coordinates("1.2345e-5", "-6.789-E5");
         assertEquals(1.2345E-5, coordinates.getY());
         assertEquals(-6.789E-5, coordinates.getX());
@@ -57,20 +57,30 @@ public class TestCoordinates {
 
 
     @Test
-    void NumberFormatExceptionShouldBeThrownWhenCoordinateIsBlank() {
+    void coordinatesWithPositiveCientificNumberAndExplicitEShouldGenerateValidCoordinates() {
+        Coordinates coordinates = new Coordinates("1.2345e+5", "-6.789+E5");
+        assertEquals(1.2345E+5, coordinates.getY());
+        assertEquals(-6.789E+5, coordinates.getX());
+    }
+
+
+    @Test
+    void blankCoordinatesShouldTrowNumberFormatException() {
         assertThrows(NumberFormatException.class, () -> new Coordinates("", "12345"));
     }
 
 
     @Test
-    void NumberFormatExceptionShouldBeThrownWhenCoordinateIsAText() {
+    void invalidCoordinatesShouldTrowNumberFormatException() {
         assertThrows(NumberFormatException.class, () -> new Coordinates("asda", "12345"));
     }
 
 
     @Test
-    void NumberFormatExceptionShouldBeThrownWhenInputCoordinateIsNull() {
+    void nullCoordinatesShouldTrowNumberFormatException() {
         assertThrows(NumberFormatException.class, () -> new Coordinates(null, "12345"));
+        assertThrows(NumberFormatException.class, () -> new Coordinates("12345", null));
+        assertThrows(NumberFormatException.class, () -> new Coordinates(null, null));
     }
 
 }

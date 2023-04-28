@@ -1,7 +1,6 @@
 package dalosto.dnit.kmlgenerator.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 import java.io.File;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +17,11 @@ public class TestFactoryKMLData {
 
 
     @Test
-    void shouldCreateAValidKMLDataFromAFile() {
-        try {
-            File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\rightformatfile.csv");
-            KMLData kmlData = factoryKMLData.createFromFile(file);
-            assertEquals(5, kmlData.getCoordinates().size());
-            assertEquals("rightformatfile", kmlData.getName());
-        } catch (InvalidKMLException e) {
-            fail();
-        }
+    void shouldCreateAValidKMLDataFromAFile() throws InvalidKMLException {
+        File file = new File("src\\test\\java\\dalosto\\dnit\\kmlgenerator\\files\\rightformatfile.csv");
+        KMLData kmlData = factoryKMLData.createFromFile(file);
+        assertEquals(5, kmlData.getCoordinates().size());
+        assertEquals("rightformatfile", kmlData.getName());
     }
     
     
