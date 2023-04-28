@@ -34,9 +34,9 @@ public class KMLGeneratorImp implements KMLGenerator {
     @Override
     public Path createFromFile(File file) {
         try {
-            KMLData kmlData = factoryKMLData.createFromFile(file);
+            KMLData kmlData = this.factoryKMLData.createFromFile(file);
             KMLStructure kmlStructure = new KMLStructure(kmlData);
-            Path savedLocation = exportKML.generateKML(kmlStructure);
+            Path savedLocation = this.exportKML.generateKML(kmlStructure);
             log.warn("SUCESSO: " + file.getName() + " salvo em: " + savedLocation);
             return savedLocation;
         } catch (InvalidKMLException | ParserConfigurationException | TransformerException e) {
