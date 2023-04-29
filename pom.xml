@@ -17,7 +17,7 @@
 	<name>kmlgenerator</name>
 	<description>Script used to generate coordinates for the Brazilian Federal road, used to be ploted in the Google Earth.</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 
 	<dependencies>
